@@ -1,5 +1,68 @@
 [TOC]
 # linux命令
+## awk
+* 输出第几列 $0表示整个行
+```
+awk '{print $1, $2}' xxx.log
+```
+* 格式化输出
+ ```
+ awk '{printf "%-8s %-8s %-8s %-18s %-22s %-15s\n",$1,$2,$3,$4,$5,$6}' xxx.txt
+ ```
+* 按列的值过滤记录
+
+```
+awk '$3==0 && $6=="LISTEN" ' xxx.txt
+awk ' $3>0 {print $0}' xxx.txt
+awk '$3==0 && $6=="LISTEN" || NR==1 ' xxx.txt
+  
+```
+
+* 指定分隔符过滤数据 -F:
+
+```
+ awk  -F: '{print $1,$3,$6}' xxx.log
+ awk -F '[;:]' //指定多个分隔符
+```
+
+* 输出某一列以后的所有列
+
+```
+  awk -F, '{for(i=8;i<=NF;i++) printf"%s ",$i} {print ""}' xxx.log
+```
+
+[酷壳-参考](https://coolshell.cn/articles/9070.html)
+
+## head
+* 第一次出现的行
+```
+grep -n "string" xxx.log | head -n 1
+```
+
+## tail
+删除前3行
+```
+tail -n +3 origin.log > target.log
+```
+## sort uniq
+
+```
+sort xxx.log | uniq
+sort xxx.log | uniq -u //output the unique context
+sort xxx.log | uniq -d // output the duplicate context
+```
+
+
+## sed
+* d命令 删除匹配行
+* 
+```
+ sed '/abc/d;/efg/d' a.txt > a.log    // 删除含字符串"abc"或“efg"的行，将结果保存到a.log
+ 
+ 若报错sed: RE error: illegal byte sequence，在当前目录下执行两条语句 export LC_COLLATE='C'
+export LC_CTYPE='C'
+```
+[sed tutorial](https://coolshell.cn/articles/9104.html)
 
 ##  scp
 
@@ -34,15 +97,17 @@ process status
 搜索xxx，常用的查看日志的方法：
 
 grep 关键词文件名
+zgrep 查看解压文件
 
 ##  |的作用
 
 管道
 
-## df -u
+## df
+output the disk info
 
-## du -sh
-
+## du 
+磁盘所占空间
 
 ## others
 
