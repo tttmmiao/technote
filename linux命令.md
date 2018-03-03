@@ -68,6 +68,12 @@ export LC_CTYPE='C'
 
 * 复制目录到远程
     scp -r local_folder remote_ip:remote_folder
+* 远程文件到本地
+    scp xxx.log user@ip:/folder/
+
+## mv
+   重命名文件
+   mv source.txt target.txt
 
 ##  man xx
 
@@ -108,6 +114,13 @@ output the disk info
 
 ## du 
 磁盘所占空间
+
+## su
+切换用户
+e.g., su - work
+
+## ps -ef | grep java
+查看java进程
 
 ## others
 

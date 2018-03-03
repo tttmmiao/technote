@@ -1,3 +1,7 @@
+[TOC]
+
+## group by
+* Q: using temperary; using filesort和groupby
 
 ## 问题
 1. 为什么要使用联合索引（多列索引）
