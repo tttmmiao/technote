@@ -26,13 +26,13 @@
 
 2.  **spring 的context如何初始化**
 
-	*  可通过三种方式加载spring容器，实现bean的扫描和管理。
+*  可通过三种方式加载spring容器，实现bean的扫描和管理。
 		- ClassPathXmlApplicationContext : 从类路径加载
 		- FileSystemXmlApplicationContext: 从文件系统加载
 		- XmlWebApplicationContext : 从web系统中加载（需要在web.xml中配置servlet或者listener的方式实现spring容器的加载）
 		配置listener的方式
 		
-		```xml
+	```xml
 		<listener>  
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
 	</listener>  
@@ -40,11 +40,11 @@
    	 <param-name>contextConfigLocation</param-name>  
     <param-value>/WEB-INF/spring-context.xml</param-value>  
 	</context-param>
-		```
+	```
 		
-		配置servlet的方式
+	配置servlet的方式
 		
-		```xml
+	```xml
 		<servlet>
         <servlet-name>springServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -54,7 +54,7 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-	```
+```
 	
 	 spring mvc中需要同时使用以上两种方式。servlet方式负责配置controller等view层，listener方式负责配置service, dao等model层。	
 	 
