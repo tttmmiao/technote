@@ -26,6 +26,10 @@
 * 排查过程：检查了很多次appcontext-dao中关于数据库的配置，没问题。最终定位出原因是xml文件没有被加载。
 * 可尽快定位问题的方式：直接调试源码。
 
+**批量操作常见异常及解决方法**
+
+[批量操作常见异常](http://www.cnblogs.com/yangh965/p/6544949.html)
+
 ## JDK7 sort排序出现Comparison method violates its general contract! - compare方法需要返回1，-1，0
 
 错误描述
@@ -88,3 +92,41 @@ Collections.sort(list, new Comparator<Integer>() {
 ```
 
 参考[stackoverflow-why does my compare method throw exception](https://stackoverflow.com/questions/6626437/why-does-my-compare-method-throw-exception-comparison-method-violates-its-gen)
+
+[图解JDK7的Comparison method violates its general contract异常](http://blog.2baxb.me/archives/993)
+
+## 线程同步 wait-notify时抛IllegalMonitorException
+
+* Integer flag = 1;
+
+  ```java
+  synchronized(flag){
+     if(){
+        flag.wait();
+     }
+     flag = flag + 1;
+     flag.notity(); //throw IllegalMonitorException
+  }
+  ```
+  
+  问题：将Integer换成AtomicInteger不会抛错。
+  原因：在同步块中对flag进行了赋值操作，使flag引用的对象改变，再调用notify的时候抛出异常（因为没有获得该flag引用的控制权，即没有synchronized）. 不能用Integer,Integer是不可变对象
+  
+## hashMap中的key没有重写equals方法引起引用频繁fullGC
+
+```java
+ for(int i = 0;i < 10000;i++){
+	 map.put(key,value)
+ }
+```
+
+key没有重写equals方法，每次比较两个对象的地址是否一样，map的长度不断增加。
+
+## 异步补偿模块
+* 通过反射newInstance. 如AService依赖BService,没有考虑到依赖，BService为null
+  
+  解决思路：如何获取AService
+  解决过程：通过上下文getBean
+  method.invoke(obj,args)
+  obj传入bean时，出现
+  object is not an instance of declaring class错误 --- 原因：bean是一个jdkDynamicAopProxy, method应为接口对象，而不是实例对象
