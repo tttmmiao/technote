@@ -1,5 +1,15 @@
 
 [TOC]
+
+## mysql问题查看
+```sql
+	show processlist;
+	select * from information_schema.processlist;
+	select * from  information_schema.innodb_locks;
+	select * from information_schema.innodb_trx; 
+```
+查到引起死锁的线程id, 使用kill pid杀掉该线程。
+
 # mysql索引
 ## index
 
@@ -101,8 +111,8 @@ list the binary logs
  
 * 查看数据库版本
   select @@version; 或者 status;
-  
-  
+ 
+ 
 ## mysqlslap压测
 * 连接
 

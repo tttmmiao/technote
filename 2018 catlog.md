@@ -162,8 +162,14 @@
 * 《剑指offer》
 * 《TCP／IP详解，卷一：协议》
 * 《白帽子讲Web安全》
+* 《Relational Database Index Design and the Optimizers》 - Wilery出版社，Tapio, Mike
 * 《java编程思想》 - done
 
 ## 算法
 * 推荐算法 - P0拾起来
 * 实践
+
+## 系统设计
+[系统设计资料](http://systemdesigninterview.blogspot.jp/)
+
+* [system design interview](https://hackernoon.com/anatomy-of-a-system-design-interview-4cb57d75a53f)

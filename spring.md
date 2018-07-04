@@ -58,9 +58,8 @@
 	
 	
 spring mvc中需要同时使用以上两种方式。servlet方式负责配置controller等view层，listener方式负责配置service, dao等model层。	
-	 
 
-3.   **servlet是什么**
+3. **servlet是什么**
  
 	Servlet是个接口，定义了一套处理网络请求的规范。
 	所有实现Servlet接口的类，都要实现它的5个方法。
@@ -84,7 +83,7 @@ spring mvc中需要同时使用以上两种方式。servlet方式负责配置con
 	[how spring web mvc really works!](https://stackify.com/spring-mvc/)
 	
 	[tomcat interaction with servlet](https://www.mulesoft.com/cn/tcat/tomcat-servlet)
-	
+
 4. bean factory 和applicationContext之间的区别
 	[bean-facotory vs applicationContext](https://docs.spring.io/spring/docs/2.5.x/reference/beans.html#context-introduction-ctx-vs-beanfactory)
 	
